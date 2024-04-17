@@ -87,6 +87,7 @@
                     return; // Ikke gjør noe hvis ID-en ikke gjenkjennes
             }
             window.location.href = url; // Navigerer direkte til URL-en, mer pålitelig for mailto
+            window.open(url, '_blank', 'noopener,noreferrer');
         }
     </script>
 </body>
