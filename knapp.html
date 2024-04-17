@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Socials</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: grid;
+            place-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f4; /* light background by default */
+            color: #333; /* light text color by default */
+        }
+        .wrapper {
+            display: inline-flex;
+        }
+        .social {
+            background-color: transparent; /* Default transparent background */
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            margin: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .icon {
+            font-size: 1.5em; /* Larger icons for better visibility */
+            transition: color 0.3s; /* Smooth color transition */
+            color: inherit; /* Inherits from parent by default */
+        }
+        /* Light scheme specific styles */
+        @media (prefers-color-scheme: light) {
+            .social:hover {
+                color: #fff; /* White text on hover in light mode */
+            }
+            .blog:hover {
+                background-color: #ffbd2f;
+            }
+            .email:hover {
+                background-color: #23c8c8;
+            }
+            .instagram:hover {
+                background-color: #e1306c;
+            }
+        }
+        /* Dark scheme specific styles */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #333; /* Dark background for dark mode */
+                color: #f4f4f4; /* Light text for dark mode */
+            }
+            .social:hover {
+                color: #000; /* Black text on hover in dark mode */
+            }
+            .blog:hover {
+                background-color: #e2a400; /* Different color for dark mode */
+            }
+            .email:hover {
+                background-color: #176e6b; /* Different color for dark mode */
+            }
+            .instagram:hover {
+                background-color: #ad2e75; /* Different color for dark mode */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Start blog Icon -->
+        <div id="blog" onclick="navigate(this.id)" class="social blog">
+            <span class="icon"><i class="fa-solid fa-house"></i></span>
+        </div>
+        <!-- End blog Icon -->
+
+        <!-- Start email Icon -->
+        <div id="email" onclick="navigate(this.id)" class="social email">
+            <span class="icon"><i class="fa-solid fa-envelope"></i></span>
+        </div>
+        <!-- End email Icon -->
+
+        <!-- Start instagram Icon -->
+        <div id="instagram" onclick="navigate(this.id)" class="social instagram">
+            <span class="icon"><i class="fab fa-instagram"></i></span>
+        </div>
+        <!-- End instagram Icon -->
+    </div>
+
+    <script>
+        function navigate(id) {
+            var url = "";
+            switch(id) {
+                case "blog":
+                    url = "https://landskap.site";
+                    break;
+                case "email":
+                    url = "mailto:social@landskap.site";
+                    break;
+                case "instagram":
+                    url = "https://www.instagram.com/land.skap.linjeforening/";
+                    break;
+                default:
+                    return; // Do nothing if ID is not recognized
+            }
+            window.location.href = url; // Navigate directly to the URL, more reliable for mailto
+        }
+    </script>
+</
