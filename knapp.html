@@ -6,11 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Socials</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <style id="theme-style">
-        /* Baseline styles (light mode) */
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
+            display: grid;
+            place-items: center;
+            min-height: 100vh;
             background-color: #f4f4f4;
-            color: #333;
         }
         .wrapper {
             display: inline-flex;
@@ -24,6 +30,7 @@
             place-items: center;
             margin: 10px;
             cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
         }
         .icon {
             font-size: 1.5em;
@@ -42,10 +49,12 @@
         .instagram:hover {
             background-color: #e1306c;
         }
+        button {
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
-    <button onclick="toggleTheme()">Mørk / Lys modus</button>
     <div class="wrapper">
         <div id="blog" onclick="navigate(this.id)" class="social blog">
             <span class="icon"><i class="fa-solid fa-house"></i></span>
@@ -58,23 +67,6 @@
         </div>
     </div>
     <script>
-        var darkTheme = false;
-        function toggleTheme() {
-            darkTheme = !darkTheme;
-            document.getElementById('theme-style').innerHTML = darkTheme ? `
-                body { background-color: #333; color: #f4f4f4; }
-                .social:hover .icon { color: #000; }
-                .blog:hover { background-color: #e2a400; }
-                .email:hover { background-color: #176e6b; }
-                .instagram:hover { background-color: #ad2e75; }
-            ` : `
-                body { background-color: #f4f4f4; color: #333; }
-                .social:hover .icon { color: #fff; }
-                .blog:hover { background-color: #ffbd2f; }
-                .email:hover { background-color: #23c8c8; }
-                .instagram:hover { background-color: #e1306c; }
-            `;
-        }
         function navigate(id) {
             var url = "";
             switch(id) {
@@ -82,7 +74,9 @@
                 case "email": url = "mailto:social@landskap.site"; break;
                 case "instagram": url = "https://www.instagram.com/land.skap.linjeforening/"; break;
             }
-            window.location.href = url;
+            if (url) {
+                window.open(url, '_blank', 'noopener,noreferrer');
+            }
         }
     </script>
 </body>
